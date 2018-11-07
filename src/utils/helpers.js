@@ -1,11 +1,13 @@
 export function formatQuestion(question, author) {
-  const { id, optionOne } = question;
+  const { id, optionOne, optionTwo } = question;
   const { name, avatarURL } = author;
 
   return {
     name,
-    id,
+    authorId: author.id,
     avatar: avatarURL,
+    id,
     optionOne,
+    optionTwo,
   };
 }
