@@ -12,9 +12,7 @@ class Question extends Component {
     if (question === null) {
       return <p>This Question doesn't exist</p>;
     }
-    const { name, authorId, id, avatar, optionOne, optionTwo } = question;
-    console.log(optionOne);
-
+    const { name, id, avatar, optionOne } = question;
     return (
       <div className="question">
         <div className="question-info">{name} asks:</div>
