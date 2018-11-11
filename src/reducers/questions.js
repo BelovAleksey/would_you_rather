@@ -8,8 +8,6 @@ export default function questions(state = {}, action) {
         ...action.questions,
       };
     case ADD_QUESTION:
-      const { question } = action;
-      console.log('Ecpaasdf' + { [action.question.id]: action.question });
       return {
         ...state,
         [action.question.id]: action.question,
