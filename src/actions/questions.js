@@ -1,8 +1,29 @@
-import { saveQuestion } from '../utils/api';
+import { saveQuestion, saveQuestionAnswer } from '../utils/api';
 import { showLoading, hideLoading } from 'react-redux-loading';
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
+export const ADD_QUESTION_ANSWER = 'ADD_QUESTION_ANSWER';
+
+export function addQuestionAnswer(info) {
+  return {
+    type: ADD_QUESTION_ANSWER,
+    info,
+  };
+}
+
+export function handleAddQuestionAnswer(info) {
+  return dispatch => {
+    console.log(info);
+    dispatch(addQuestionAnswer(info));
+
+    return saveQuestionAnswer(info).catch(e => {
+      console.warn('Error in handleAddQuestionAnswer: ', e);
+      dispatch(addQuestionAnswer(info));
+      alert('The was an error answering question. Try again.');
+    });
+  };
+}
 
 export function addQuestion(question) {
   return {

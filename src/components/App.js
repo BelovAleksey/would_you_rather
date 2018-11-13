@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div>
         {this.props.loading === true ? null : (
-          <Polling match={{ params: { id: 'vthrdm985a262al8qx3do' } }} />
+          <Polling match={{ params: { id: '6ni6ok3ym7mf1p33lnez' } }} />
         )}
       </div>
     );
