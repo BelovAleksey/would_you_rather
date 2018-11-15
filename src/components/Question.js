@@ -12,6 +12,7 @@ class Question extends Component {
     if (question === null) {
       return <p>This Question doesn't exist</p>;
     }
+    if (!this.props.authedUser) return <span>Please Login</span>;
     const { name, id, avatar, optionOne } = question;
     return (
       <div className="question">
@@ -33,9 +34,10 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps({ users, questions }, { id }) {
+function mapStateToProps({ authedUser, users, questions }, { id }) {
   const question = questions[id];
   return {
+    authedUser,
     question: question ? formatQuestion(question, users[question.author]) : null,
   };
 }

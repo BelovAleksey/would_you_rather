@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 class LeaderBoard extends Component {
   render() {
-    console.log(this.props);
+    if (!this.props.authedUser) return <span>Please Login</span>;
     return (
       <div>
         <ul className="center">
@@ -28,8 +28,9 @@ class LeaderBoard extends Component {
     );
   }
 }
-function mapStateToProps({ users }) {
+function mapStateToProps({ authedUser, users }) {
   return {
+    authedUser,
     users,
   };
 }

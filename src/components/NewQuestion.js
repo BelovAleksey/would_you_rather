@@ -34,6 +34,7 @@ class NewQuestion extends Component {
   };
   render() {
     const { optionOne, optionTwo } = this.state;
+    if (!this.props.authedUser) return <span>Please Login</span>;
     return (
       <div>
         <h3 className="center">Create New Question</h3>
@@ -59,5 +60,9 @@ class NewQuestion extends Component {
     );
   }
 }
-
-export default connect()(NewQuestion);
+function mapToStateProps({ authedUser }) {
+  return {
+    authedUser,
+  };
+}
+export default connect(mapToStateProps)(NewQuestion);
