@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import { setAuthedUser } from '../actions/authedUser';
@@ -7,6 +8,7 @@ import { setAuthedUser } from '../actions/authedUser';
 class Login extends Component {
   state = {
     currentOption: 'unselected',
+    toHome: false,
   };
   handleChange = (e, data) => {
     e.preventDefault();
@@ -17,15 +19,20 @@ class Login extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.dispatch(setAuthedUser(this.state.currentOption));
+    this.setState(() => ({
+      toHome: true,
+    }));
   };
 
   render() {
-    const { currentOption } = this.state;
+    const { currentOption, toHome } = this.state;
+    if (toHome === 'true' || this.props.authedUser !== null) {
+      return <Redirect to="/home" />;
+    }
     return (
       <div className="center">
         <h3>Welcome to the Would You Rather App!</h3>
         <span>Please sign in to continue</span>
-        <span>Sign in</span>
         <Dropdown
           placeholder="Select User"
           fluid
@@ -44,8 +51,9 @@ class Login extends Component {
     );
   }
 }
-function mapStateToProps({ users }) {
+function mapStateToProps({ users, authedUser }) {
   return {
+    authedUser,
     users: Object.values(users).map(user => ({
       text: user.name,
       value: user.id,

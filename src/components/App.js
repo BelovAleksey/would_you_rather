@@ -9,6 +9,7 @@ import Polling from './Polling';
 import LeaderBoard from './LeaderBoard';
 import Login from './Login';
 import Nav from './Nav';
+import AuthorisedUser from './AuthorisedUser';
 
 class App extends Component {
   componentDidMount() {
@@ -21,9 +22,14 @@ class App extends Component {
           <LoadingBar />
           <div>
             <Nav />
+            {this.props.authedUser !== null ? <AuthorisedUser /> : null}
             {this.props.loading === true ? null : (
               <div>
-                <Route exact path="/" render={() => <Redirect to="Login" />} />
+                {this.props.authedUser !== null ? (
+                  <Route exact path="/" render={() => <Redirect to="/home" />} />
+                ) : (
+                  <Route exact path="/" render={() => <Redirect to="/login" />} />
+                )}
                 <Route path="/login" component={Login} />
                 <Route path="/questions/:question_id" component={Polling} />
                 <Route path="/leaderboard" component={LeaderBoard} />
@@ -38,10 +44,11 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({ questions, authedUser }) {
+function mapStateToProps({ users, questions, authedUser }) {
   return {
     loading: questions === null,
     authedUser,
+    users,
   };
 }
 

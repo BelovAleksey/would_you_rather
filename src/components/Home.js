@@ -51,10 +51,12 @@ class Home extends Component {
 function mapStateToProps({ users, questions, authedUser }) {
   return {
     authedUser,
-    answeredQuestion: Object.keys(users[authedUser].answers),
-    unAnsweredQuestion: Object.keys(questions).filter(
-      question => !Object.keys(users[authedUser].answers).includes(question),
-    ),
+    answeredQuestion: authedUser ? Object.keys(users[authedUser].answers) : null,
+    unAnsweredQuestion: authedUser
+      ? Object.keys(questions).filter(
+          question => !Object.keys(users[authedUser].answers).includes(question),
+        )
+      : null,
   };
 }
 

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { formatQuestion } from '../utils/helpers';
 
 class Question extends Component {
   toQuestion = (e, id) => {
     e.preventDefault();
-    //TODO: redirect to Question
+    return <Redirect to={`questions/${id}`} />;
   };
   render() {
     const { question } = this.props;
