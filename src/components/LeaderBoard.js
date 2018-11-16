@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 
 class LeaderBoard extends Component {
   render() {
-    if (!this.props.authedUser) return <span>Please Login</span>;
     return (
       <div>
         <ul className="center">

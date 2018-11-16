@@ -40,7 +40,6 @@ class Polling extends Component {
     const optionOneVotes = question.optionOne.votes.length;
     const optionTwoVotes = question.optionTwo.votes.length;
     const allVotes = optionOneVotes + optionTwoVotes;
-    if (!this.props.authedUser) return <span>Please Login</span>;
 
     return (
       <div className="question">
@@ -90,15 +89,17 @@ class Polling extends Component {
 }
 
 function mapStateToProps({ authedUser, users, questions }, props) {
-  const { id } = props.match.params;
+  const { question_id } = props.match.params;
   const user = users[authedUser];
+  const answer = user ? user.answers[question_id] : null;
+  const question = questions ? questions[question_id] : null;
 
   return {
     authedUser,
-    id,
+    question_id,
     user,
-    question: questions[id],
-    answer: user.answers[id] ? user.answers[id] : null,
+    question,
+    answer,
   };
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { formatQuestion } from '../utils/helpers';
+import { Link } from 'react-router-dom';
 
 class Question extends Component {
   toQuestion = (e, id) => {
@@ -13,7 +14,6 @@ class Question extends Component {
     if (question === null) {
       return <p>This Question doesn't exist</p>;
     }
-    if (!this.props.authedUser) return <span>Please Login</span>;
     const { name, id, avatar, optionOne } = question;
     return (
       <div className="question">
@@ -27,9 +27,9 @@ class Question extends Component {
             ...
           </span>
         </div>
-        <button className="btn" onClick={e => this.toQuestion(e, id)}>
+        <Link className="btn" to={`question/${id}`}>
           View Poll
-        </button>
+        </Link>
       </div>
     );
   }

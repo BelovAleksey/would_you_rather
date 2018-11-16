@@ -20,7 +20,6 @@ class Home extends Component {
     const renderedQuestions = this.state.answered
       ? this.props.answeredQuestion
       : this.props.unAnsweredQuestion;
-    if (!this.props.authedUser) return <span>Please Login</span>;
     return (
       <div>
         <h3 className="center">Questions</h3>
@@ -49,6 +48,7 @@ class Home extends Component {
 }
 
 function mapStateToProps({ users, questions, authedUser }) {
+  console.log({ users, questions, authedUser });
   return {
     authedUser,
     answeredQuestion: authedUser ? Object.keys(users[authedUser].answers) : null,

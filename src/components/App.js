@@ -22,16 +22,11 @@ class App extends Component {
           <LoadingBar />
           <div>
             <Nav />
-            {this.props.authedUser !== null ? <AuthorisedUser /> : null}
+            {this.props.authedUser !== null ? <AuthorisedUser /> : <Redirect to="/login" />}
             {this.props.loading === true ? null : (
               <div>
-                {this.props.authedUser !== null ? (
-                  <Route exact path="/" render={() => <Redirect to="/home" />} />
-                ) : (
-                  <Route exact path="/" render={() => <Redirect to="/login" />} />
-                )}
                 <Route path="/login" component={Login} />
-                <Route path="/questions/:question_id" component={Polling} />
+                <Route path="/question/:question_id" component={Polling} />
                 <Route path="/leaderboard" component={LeaderBoard} />
                 <Route path="/add" component={NewQuestion} />
                 <Route path="/home" component={Home} />

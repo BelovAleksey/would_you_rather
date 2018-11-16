@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
+import { Redirect } from 'react-router-dom';
 
 class NewQuestion extends Component {
   state = {
     optionOneText: '',
     optionTwoText: '',
+    toHome: false,
   };
   handleChangeOptionOne = e => {
     const text = e.target.value;
@@ -30,11 +32,14 @@ class NewQuestion extends Component {
     this.setState({
       optionOneText: '',
       optionTwoText: '',
+      toHome: true,
     });
   };
   render() {
-    const { optionOne, optionTwo } = this.state;
-    if (!this.props.authedUser) return <span>Please Login</span>;
+    const { optionOne, optionTwo, toHome } = this.state;
+    if (toHome === true) {
+      return <Redirect to="/" />;
+    }
     return (
       <div>
         <h3 className="center">Create New Question</h3>
