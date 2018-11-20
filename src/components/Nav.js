@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
+import AuthorisedUser from './AuthorisedUser';
 
 class Nav extends Component {
   handleClick = e => {
@@ -27,6 +28,7 @@ class Nav extends Component {
               Leader Board
             </NavLink>
           </li>
+          <li>{this.props.authedUser !== null ? <AuthorisedUser /> : <Redirect to="/login" />}</li>
         </ul>
       </nav>
     );

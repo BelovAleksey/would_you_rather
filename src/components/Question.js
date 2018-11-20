@@ -17,7 +17,7 @@ class Question extends Component {
     const { name, id, avatar, optionOne } = question;
     return (
       <div className="question">
-        <div className="question-info">{name} asks:</div>
+        <h3 className="question-author">{name} asks:</h3>
         <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
         <div>
           <span>Would you rather</span>

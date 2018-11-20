@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
+import { Redirect } from 'react-router-dom';
 
 class Home extends Component {
   state = {
@@ -20,9 +21,11 @@ class Home extends Component {
     const renderedQuestions = this.state.answered
       ? this.props.answeredQuestion
       : this.props.unAnsweredQuestion;
+    if (this.props.authedUser === null) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div>
-        <h3 className="center">Questions</h3>
         <div className="center">
           <button className={this.state.answered ? 'active' : null} onClick={this.changeToAnswered}>
             Answered Questions
@@ -33,15 +36,14 @@ class Home extends Component {
           >
             Unanswered Questions
           </button>
+          <ul className="center">
+            {renderedQuestions.map(id => (
+              <li key={id}>
+                <Question id={id} />
+              </li>
+            ))}
+          </ul>
         </div>
-
-        <ul className="center">
-          {renderedQuestions.map(id => (
-            <li key={id}>
-              <Question id={id} />
-            </li>
-          ))}
-        </ul>
       </div>
     );
   }

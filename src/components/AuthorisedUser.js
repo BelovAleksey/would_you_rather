@@ -10,7 +10,7 @@ class AuthorisedUser extends Component {
   render() {
     const { user } = this.props;
     return (
-      <div>
+      <div className="user">
         <span>Hello, {user.name}</span>
         <img className="avatar" src={user.avatarURL} alt={`Avatart of ${user.name}`} />
         <button onClick={this.handleClick}>Logout</button>

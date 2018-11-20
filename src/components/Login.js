@@ -30,9 +30,16 @@ class Login extends Component {
       return <Redirect to="/home" />;
     }
     return (
-      <div className="center">
-        <h3>Welcome to the Would You Rather App!</h3>
-        <span>Please sign in to continue</span>
+      <div className="login">
+        <div>
+          <h3>Welcome to the Would You Rather App!</h3>
+          <span>Please sign in to continue</span>
+        </div>
+        <img
+          className="login-image"
+          src="https://image.flaticon.com/icons/svg/544/544570.svg"
+          alt="Would you rather"
+        />
         <Dropdown
           placeholder="Select User"
           fluid
@@ -41,7 +48,7 @@ class Login extends Component {
           onChange={this.handleChange}
         />
         <button
-          className="btn"
+          className="login-button"
           onClick={this.handleSubmit}
           disabled={currentOption === 'unselected' ? true : false}
         >

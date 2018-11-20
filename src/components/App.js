@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { LoadingBar } from 'react-redux-loading';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
@@ -9,7 +9,6 @@ import Polling from './Polling';
 import LeaderBoard from './LeaderBoard';
 import Login from './Login';
 import Nav from './Nav';
-import AuthorisedUser from './AuthorisedUser';
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +21,6 @@ class App extends Component {
           <LoadingBar />
           <div>
             <Nav />
-            {this.props.authedUser !== null ? <AuthorisedUser /> : <Redirect to="/login" />}
             {this.props.loading === true ? null : (
               <div>
                 <Route path="/login" component={Login} />
