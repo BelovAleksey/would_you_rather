@@ -25,18 +25,21 @@ class Home extends Component {
       return <Redirect to="/login" />;
     }
     return (
-      <div>
-        <div className="center">
-          <button className={this.state.answered ? 'active' : null} onClick={this.changeToAnswered}>
+      <div className="questions-list">
+        <div>
+          <button
+            className={this.state.answered ? 'active-questions-list' : 'passive-questions-list'}
+            onClick={this.changeToAnswered}
+          >
             Answered Questions
           </button>
           <button
-            className={this.state.answered ? null : 'active'}
+            className={this.state.answered ? 'passive-questions-list' : 'active-questions-list'}
             onClick={this.changeToUnanswered}
           >
             Unanswered Questions
           </button>
-          <ul className="center">
+          <ul>
             {renderedQuestions.map(id => (
               <li key={id}>
                 <Question id={id} />

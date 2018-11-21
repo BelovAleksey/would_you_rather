@@ -1,10 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   color: #252525;
 }
-
+* {
+  font-family: sans-serif;
+}
 a {
   text-decoration: none;
   color: #252525;
@@ -17,16 +18,6 @@ a {
   margin: 0 auto;
   border: 1px solid #e9e7e7;
   border-radius: 4px;
-}
-
-.container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px;
-}
-
-.btn {
-  cursor: pointer;
 }
 .login-button {
   width: 100%;
@@ -42,24 +33,29 @@ a {
   font-size: 16px;
 }
 
-.btn:hover {
-  border-color: rgba(0, 0, 0, 0.5);
-  text-decoration: none;
-}
-
-.btn:focus {
-  outline: 0;
-  font-weight: 700;
-  border-width: 2px;
-}
-
-.center {
-  text-align: center;
-}
-
-.active {
-  font-weight: bold;
+.active-questions-list {
+  color: white;
   background-color: #5c5d6f;
+  height: 50px;
+  width: 50%;
+}
+.passive-questions-list {
+  color: #5c5d6f;
+  background-color: white;
+  height: 50px;
+  width: 50%;
+}
+
+.questions-list {
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid #dad7d7;
+  border-radius: 3px;
+  width: 100%;
+  max-width: 630px;
+  height: auto;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .nav ul {
@@ -85,14 +81,6 @@ li {
   text-decoration: none;
   color: #5c5d6f;
 }
-.user {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  text-align: center;
-  vertical-align: middle;
-  margin: auto;
-}
 
 .avatar {
   height: 30px;
@@ -108,14 +96,22 @@ li {
   width: 100%;
   max-width: 590px;
   height: 200px;
-  padding: 10px;
   border: 1px solid #dad7d7;
   border-radius: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 16px;
 }
 
 .question-author {
   border: 1px solid #dad7d7;
   border-radius: 3px;
+  height: 25%;
+  margin: 0 auto;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 2%;
+  background-color: rgb(181, 181, 181);
 }
 
 .new-question {

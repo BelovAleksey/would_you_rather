@@ -17,19 +17,21 @@ class Question extends Component {
     const { name, id, avatar, optionOne } = question;
     return (
       <div className="question">
-        <h3 className="question-author">{name} asks:</h3>
-        <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+        <div className="question-author">{name} asks:</div>
         <div>
-          <span>Would you rather</span>
-          <span>
-            ...
-            {optionOne.text}
-            ...
-          </span>
+          <img src={avatar} alt={`Avatar of ${name}`} className="avatar" />
+          <div>
+            <span>Would you rather</span>
+            <span>
+              ...
+              {optionOne.text}
+              ...
+            </span>
+          </div>
+          <Link className="btn" to={`question/${id}`}>
+            View Poll
+          </Link>
         </div>
-        <Link className="btn" to={`question/${id}`}>
-          View Poll
-        </Link>
       </div>
     );
   }
