@@ -12,7 +12,7 @@ class AuthorisedUser extends Component {
     return (
       <div className="user">
         <span>Hello, {user.name}</span>
-        <img className="avatar" src={user.avatarURL} alt={`Avatart of ${user.name}`} />
+        <img className="avatar-small" src={user.avatarURL} alt={`Avatart of ${user.name}`} />
         <button onClick={this.handleClick}>Logout</button>
       </div>
     );

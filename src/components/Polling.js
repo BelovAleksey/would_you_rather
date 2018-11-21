@@ -44,7 +44,7 @@ class Polling extends Component {
     return (
       <div className="question">
         <div className="question-info">{name} asks:</div>
-        <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar" />
+        <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar-big" />
         {answered ? (
           <div>
             <h3>Results</h3>

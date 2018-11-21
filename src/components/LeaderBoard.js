@@ -13,7 +13,7 @@ class LeaderBoard extends Component {
             <li key={user.id}>
               <div>
                 <h3>{user.name}</h3>
-                <img src={user.avatarURL} alt={`Avatar of ${user.name}`} className="avatar" />
+                <img src={user.avatarURL} alt={`Avatar of ${user.name}`} className="avatar-big" />
                 <div>
                   <span>Answered questions {Object.keys(user.answers).length}</span>
                   <span>Created questions {user.questions.length}</span>
