@@ -9,11 +9,18 @@ class AuthorisedUser extends Component {
   };
   render() {
     const { user } = this.props;
+
     return (
-      <div className="user">
-        <span>Hello, {user.name}</span>
-        <img className="avatar-small" src={user.avatarURL} alt={`Avatart of ${user.name}`} />
-        <button onClick={this.handleClick}>Logout</button>
+      <div className="navigation-item">
+        <div className="navigation-user">Hello, {user.name}</div>
+        <div className="navigation-user">
+          <img className="avatar-small" src={user.avatarURL} alt={`Avatart of ${user.name}`} />
+        </div>
+        <div className="navigation-user">
+          <button className="logout" onClick={this.handleClick}>
+            Logout
+          </button>
+        </div>
       </div>
     );
   }

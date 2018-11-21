@@ -11,26 +11,29 @@ class Nav extends Component {
   };
   render() {
     return (
-      <nav className="nav">
-        <ul>
-          <li>
-            <NavLink to="/home" activeClassName="active" onClick={this.handleClick}>
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/add" activeClassName="active" onClick={this.handleClick}>
-              New Question
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/leaderboard" activeClassName="active" onClick={this.handleClick}>
-              Leader Board
-            </NavLink>
-          </li>
-          <li>{this.props.authedUser !== null ? <AuthorisedUser /> : <Redirect to="/login" />}</li>
-        </ul>
-      </nav>
+      <div className="navigation-block">
+        <div className="navigation-item">
+          <NavLink className="link" to="/home" activeClassName="active" onClick={this.handleClick}>
+            Home
+          </NavLink>
+        </div>
+        <div className="navigation-item">
+          <NavLink className="link" to="/add" activeClassName="active" onClick={this.handleClick}>
+            New Question
+          </NavLink>
+        </div>
+        <div className="navigation-item">
+          <NavLink
+            className="link"
+            to="/leaderboard"
+            activeClassName="active"
+            onClick={this.handleClick}
+          >
+            Leader Board
+          </NavLink>
+        </div>
+        <div>{this.props.authedUser !== null ? <AuthorisedUser /> : <Redirect to="/login" />}</div>
+      </div>
     );
   }
 }
