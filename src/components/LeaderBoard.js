@@ -17,12 +17,14 @@ class LeaderBoard extends Component {
                 </div>
                 <div className="questions-section">
                   <div className="leaderboard-name">{user.name}</div>
-                  <div className="leaderboard-questions">
-                    Answered questions {Object.keys(user.answers).length}
-                  </div>
-                  <div className="line"> </div>
-                  <div className="leaderboard-questions">
-                    Created questions {user.questions.length}
+                  <div className="questions-section-body">
+                    <div className="leaderboard-questions">
+                      Answered questions {Object.keys(user.answers).length}
+                    </div>
+                    <div className="line"> </div>
+                    <div className="leaderboard-questions">
+                      Created questions {user.questions.length}
+                    </div>
                   </div>
                 </div>
                 <div className="leaderboard-score">

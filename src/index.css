@@ -3,7 +3,6 @@ body {
   padding: 0;
   color: #252525;
 }
-
 * {
   font-family: sans-serif;
 }
@@ -34,21 +33,24 @@ body {
 .active-questions-list {
   color: white;
   background-color: #5c5d6f;
+  border-color: #5c5d6f;
   height: 50px;
   width: 50%;
 }
 .passive-questions-list {
   color: #5c5d6f;
   background-color: white;
+  border-color: #dad7d7;
   height: 50px;
   width: 50%;
 }
 
 .questions-list {
+  margin: 2% auto;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid #dad7d7;
-  border-radius: 3px;
+  border: 2px solid #dad7d7;
+  border-radius: 5px;
   width: 100%;
   max-width: 630px;
   height: auto;
@@ -113,6 +115,10 @@ body {
   flex: 50%;
   position: relative;
 }
+.questions-section-body {
+  border-left: 1px solid #dad7d7;
+  border-right: 1px solid #dad7d7;
+}
 
 .leaderboard-score {
   flex: 20%;
@@ -169,18 +175,18 @@ li {
 
 .question {
   width: 100%;
+  margin: 3%;
   max-width: 590px;
   height: 200px;
-  border: 1px solid #dad7d7;
-  border-radius: 3px;
+  border: 2px solid rgb(181, 181, 181);
+  border-radius: 5px;
   margin-left: auto;
   margin-right: auto;
   font-size: 16px;
 }
 
 .question-header {
-  border: 1px solid #dad7d7;
-  border-radius: 3px;
+  border-bottom: 1px solid rgb(181, 181, 181);
   height: 22%;
   font-size: 23px;
   font-weight: bold;
@@ -188,8 +194,6 @@ li {
   background-color: rgb(181, 181, 181);
 }
 .question-body {
-  border: 1px solid #dad7d7;
-  border-radius: 3px;
   float: left;
   height: 78%;
   width: 100%;
@@ -229,16 +233,57 @@ li {
 
 .new-question {
   width: 100%;
-  max-width: 590px;
-  margin: 0 auto;
+  max-width: 500px;
+  margin: 2% auto;
   display: flex;
   flex-direction: column;
+  border-radius: 5px;
+  border: 2px solid #dad7d7;
+}
+
+.new-question-header {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  padding: 3%;
+  border-bottom: 2px solid #dad7d7;
+}
+.new-question-div-one {
+  padding-top: 3%;
+  padding-left: 3%;
+  font-size: 17px;
+}
+.new-question-div-two {
+  padding-top: 5%;
+  font-size: 22px;
+  padding-left: 3%;
+  font-weight: bold;
+}
+.new-question-body {
+  margin-top: 2%;
+  text-align: center;
+}
+.new-question-button {
+  color: white;
+  background-color: #5c5d6f;
+  font-size: 19px;
+  height: 30px;
+  width: 95%;
+  text-align: center;
+  bottom: 0;
+  left: 5%;
+  margin: 2%;
+  border-radius: 4px;
+}
+.new-question-or {
+  position: relative;
 }
 
 .textarea {
-  border-radius: 4px;
+  margin: 1%;
+  border-radius: 5px;
   border: 1px solid #dad7d7;
-  padding: 10px;
   font-size: 15px;
-  height: 100px;
+  height: 30px;
+  width: 95%;
 }

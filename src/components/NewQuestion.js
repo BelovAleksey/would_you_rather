@@ -41,26 +41,34 @@ class NewQuestion extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div>
-        <h3 className="center">Create New Question</h3>
-        <form className="center" onSubmit={this.handleSubmit}>
-          <textarea
-            placeholder="Enter Option One Text Here"
-            value={optionOne}
-            onChange={this.handleChangeOptionOne}
-            className="textarea"
-          />
-          <div>Or</div>
-          <textarea
-            placeholder="Enter Option Two Text Here"
-            value={optionTwo}
-            onChange={this.handleChangeOptionTwo}
-            className="textarea"
-          />
-          <button className="btn" type="submit" disabled={optionOne === '' || optionTwo === ''}>
-            Submit
-          </button>
-        </form>
+      <div className="new-question">
+        <div className="new-question-header">Create New Question</div>
+        <div className="new-question-div-one">Complete the question:</div>
+        <div className="new-question-div-two">Would you rather ...</div>
+        <div className="new-question-body">
+          <form className="" onSubmit={this.handleSubmit}>
+            <textarea
+              placeholder="Enter Option One Text Here"
+              value={optionOne}
+              onChange={this.handleChangeOptionOne}
+              className="textarea"
+            />
+            <div className="new-question-or">OR</div>
+            <textarea
+              placeholder="Enter Option Two Text Here"
+              value={optionTwo}
+              onChange={this.handleChangeOptionTwo}
+              className="textarea"
+            />
+            <button
+              className="new-question-button"
+              type="submit"
+              disabled={optionOne === '' || optionTwo === ''}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
       </div>
     );
   }

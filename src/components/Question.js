@@ -30,7 +30,9 @@ class Question extends Component {
               ...
             </div>
             <div className="polling-btn">
-              <Link to={`question/${id}`}>View Poll</Link>
+              <Link className="link" to={`question/${id}`}>
+                View Poll
+              </Link>
             </div>
           </div>
         </div>
