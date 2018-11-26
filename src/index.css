@@ -12,7 +12,8 @@ body {
   width: 100%;
   max-width: 400px;
   padding: 10px;
-  margin: 0 auto;
+  margin: auto;
+  margin-top: 2%;
   border: 1px solid #e9e7e7;
   border-radius: 4px;
 }
@@ -174,10 +175,9 @@ li {
 }
 
 .question {
-  width: 100%;
   margin: 3%;
-  max-width: 590px;
-  height: 200px;
+  max-width: 630px;
+  min-height: 220px;
   border: 2px solid rgb(181, 181, 181);
   border-radius: 5px;
   margin-left: auto;
@@ -201,23 +201,40 @@ li {
 }
 .polling-section {
   flex: 70%;
-  margin: 3%;
+  margin: 2%;
   border-left: 1px solid #dad7d7;
+  border-radius: var(--radius);
   position: relative;
 }
 
 .polling-header {
   font-size: 21px;
   font-weight: bold;
-  position: absolute;
-  top: 0;
-  left: 5%;
+  margin-left: 5%;
 }
-
+.polling-choosen-answer {
+  background-color: #c1bdbd;
+}
+.polling-unchoosen-answer {
+  background-color: #d8d5d579;
+}
 .polling-body {
-  position: absolute;
-  top: 35%;
-  left: 5%;
+  margin-top: 7%;
+  margin-left: 5%;
+}
+.polling-body-results {
+  margin-top: 1%;
+  margin-left: 5%;
+}
+.polling-answers-count {
+  font-size: 15px;
+  text-align: center;
+  font-weight: bold;
+}
+.polling-percentage {
+  background-color: rgb(181, 181, 181);
+  border-radius: 5px;
+  text-align: right;
 }
 
 .polling-btn {

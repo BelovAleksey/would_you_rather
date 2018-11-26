@@ -41,48 +41,77 @@ class Polling extends Component {
     const optionTwoVotes = question.optionTwo.votes.length;
     const allVotes = optionOneVotes + optionTwoVotes;
 
+    const optionOnePct = answered ? this.convertToPct(optionOneVotes / allVotes) : null;
+    const optionTwoPct = answered ? this.convertToPct(optionTwoVotes / allVotes) : null;
+
     return (
       <div className="question">
-        <div className="question-info">{name} asks:</div>
-        <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar-big" />
-        {answered ? (
-          <div>
-            <h3>Results</h3>
-            <div>
-              <span>Would you rather {question.optionOne.text}?</span>
-              <span>{this.convertToPct(optionOneVotes / allVotes)}</span>
-              <span>Would you rather {question.optionTwo.text}?</span>
-              <span>{this.convertToPct(optionTwoVotes / allVotes)}</span>
-            </div>
+        <div className="question-header">{answered ? `Asked By ${name}` : `${name} asks:`}</div>
+        <div className="question-body">
+          <div className="avatar-section">
+            <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar-big" />
           </div>
-        ) : (
-          <div>
-            <span>Would you rather</span>
-            <form>
-              <label>
-                <input
-                  type="radio"
-                  id="optionOne"
-                  checked={this.state.currentAnswer === 'optionOne'}
-                  onChange={this.handleChange}
-                />
-                {question.optionOne.text}
-              </label>
-              <label>
-                <input
-                  type="radio"
-                  id="optionTwo"
-                  checked={this.state.currentAnswer === 'optionTwo'}
-                  onChange={this.handleChange}
-                />
-                {question.optionTwo.text}
-              </label>
-            </form>
-            <button className="btn" type="submit" onClick={this.handleSubmit}>
-              Submit
-            </button>
+          <div className="polling-section">
+            <div className="polling-header">{answered ? 'Results' : 'Would You Rather ...'}</div>
+            {answered ? (
+              <div className="polling-body-results">
+                <div
+                  className={
+                    answered === 'optionOne' ? 'polling-choosen-answer' : 'polling-unchoosen-answer'
+                  }
+                >
+                  <div>Would you rather {question.optionOne.text}?</div>
+                  <div className="polling-percentage" style={{ width: optionOnePct }}>
+                    {optionOnePct}
+                  </div>
+                  <div className="polling-answers-count">
+                    {optionOneVotes} out of {allVotes} votes
+                  </div>
+                </div>
+
+                <div
+                  className={
+                    answered === 'optionTwo' ? 'polling-choosen-answer' : 'polling-unchoosen-answer'
+                  }
+                >
+                  <div>Would you rather {question.optionTwo.text}?</div>
+                  <div className="polling-percentage" style={{ width: optionTwoPct }}>
+                    {optionTwoPct}
+                  </div>
+                  <div className="polling-answers-count">
+                    {optionTwoVotes} out of {allVotes} votes
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="polling-body">
+                <form>
+                  <label>
+                    <input
+                      type="radio"
+                      id="optionOne"
+                      checked={this.state.currentAnswer === 'optionOne'}
+                      onChange={this.handleChange}
+                    />
+                    {question.optionOne.text}
+                  </label>
+                  <label>
+                    <input
+                      type="radio"
+                      id="optionTwo"
+                      checked={this.state.currentAnswer === 'optionTwo'}
+                      onChange={this.handleChange}
+                    />
+                    {question.optionTwo.text}
+                  </label>
+                </form>
+                <button className="btn" type="submit" onClick={this.handleSubmit}>
+                  Submit
+                </button>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     );
   }

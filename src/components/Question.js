@@ -29,11 +29,9 @@ class Question extends Component {
               {optionOne.text}
               ...
             </div>
-            <div className="polling-btn">
-              <Link className="link" to={`question/${id}`}>
-                View Poll
-              </Link>
-            </div>
+            <Link className="link" to={`question/${id}`}>
+              <div className="polling-btn">View Poll</div>
+            </Link>
           </div>
         </div>
       </div>
