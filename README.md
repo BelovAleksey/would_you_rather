@@ -16,7 +16,7 @@ After log in, the user ables to toggle between his/her answered and unanswered p
 
 ## License
 
-It is free software, and may be redistributed under the terms specified in the [LICENSE](https://github.com/BelovAleksey/reactnd-project-myreads-starter/blob/master/LICENSE.md) file.
+It is free software, and may be redistributed under the terms specified in the [LICENSE](https://github.com/BelovAleksey/would_you_rather/blob/master/LICENSE.MD) file.
 
 ## About
 
