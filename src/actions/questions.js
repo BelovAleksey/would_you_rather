@@ -14,7 +14,6 @@ export function addQuestionAnswer(info) {
 
 export function handleAddQuestionAnswer(info) {
   return dispatch => {
-    console.log(info);
     dispatch(addQuestionAnswer(info));
 
     return saveQuestionAnswer(info).catch(e => {

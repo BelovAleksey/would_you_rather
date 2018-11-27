@@ -5,7 +5,7 @@ import { setAuthedUser } from '../actions/authedUser';
 class AuthorisedUser extends Component {
   handleClick = e => {
     e.preventDefault();
-    this.props.dispatch(setAuthedUser(''));
+    this.props.dispatch(setAuthedUser(null));
   };
   render() {
     const { user } = this.props;

@@ -53,7 +53,6 @@ class Home extends Component {
 }
 
 function mapStateToProps({ users, questions, authedUser }) {
-  console.log({ users, questions, authedUser });
   return {
     authedUser,
     answeredQuestion: authedUser ? Object.keys(users[authedUser].answers) : null,
