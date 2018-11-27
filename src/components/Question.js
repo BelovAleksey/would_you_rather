@@ -20,8 +20,10 @@ class Question extends Component {
         <div className="question-header">{name} asks:</div>
         <div className="question-body">
           <div className="avatar-section">
+            <span className="helper" />
             <img src={avatar} alt={`Avatar of ${name}`} className="avatar-big" />
           </div>
+          <div className="line" />
           <div className="polling-section">
             <div className="polling-header">Would you rather</div>
             <div className="polling-body">

@@ -45,71 +45,81 @@ class Polling extends Component {
     const optionTwoPct = answered ? this.convertToPct(optionTwoVotes / allVotes) : null;
 
     return (
-      <div className="question">
-        <div className="question-header">{answered ? `Asked By ${name}` : `${name} asks:`}</div>
-        <div className="question-body">
-          <div className="avatar-section">
-            <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar-big" />
-          </div>
-          <div className="polling-section">
-            <div className="polling-header">{answered ? 'Results' : 'Would You Rather ...'}</div>
-            {answered ? (
-              <div className="polling-body-results">
-                <div
-                  className={
-                    answered === 'optionOne' ? 'polling-choosen-answer' : 'polling-unchoosen-answer'
-                  }
-                >
-                  <div>Would you rather {question.optionOne.text}?</div>
-                  <div className="polling-percentage" style={{ width: optionOnePct }}>
-                    {optionOnePct}
+      <div className="results">
+        <div className="question">
+          <div className="question-header">{answered ? `Asked By ${name}` : `${name} asks:`}</div>
+          <div className="question-body">
+            <div className="avatar-section">
+              <span className="helper" />
+              <img src={avatarURL} alt={`Avatar of ${name}`} className="avatar-big" />
+            </div>
+            <div className="line" />
+            <div className="polling-section">
+              <div className="polling-header">{answered ? 'Results' : 'Would You Rather ...'}</div>
+              {answered ? (
+                <div className="polling-body-results">
+                  <div
+                    className={
+                      answered === 'optionOne'
+                        ? 'polling-choosen-answer'
+                        : 'polling-unchoosen-answer'
+                    }
+                  >
+                    {answered === 'optionOne' ? <div className="vote">Your vote</div> : null}
+                    <div>Would you rather {question.optionOne.text}?</div>
+                    <div className="polling-percentage" style={{ width: optionOnePct }}>
+                      {optionOnePct}
+                    </div>
+                    <div className="polling-answers-count">
+                      {optionOneVotes} out of {allVotes} votes
+                    </div>
                   </div>
-                  <div className="polling-answers-count">
-                    {optionOneVotes} out of {allVotes} votes
-                  </div>
-                </div>
 
-                <div
-                  className={
-                    answered === 'optionTwo' ? 'polling-choosen-answer' : 'polling-unchoosen-answer'
-                  }
-                >
-                  <div>Would you rather {question.optionTwo.text}?</div>
-                  <div className="polling-percentage" style={{ width: optionTwoPct }}>
-                    {optionTwoPct}
-                  </div>
-                  <div className="polling-answers-count">
-                    {optionTwoVotes} out of {allVotes} votes
+                  <div
+                    className={
+                      answered === 'optionTwo'
+                        ? 'polling-choosen-answer'
+                        : 'polling-unchoosen-answer'
+                    }
+                  >
+                    {answered === 'optionTwo' ? <div className="vote">Your vote</div> : null}
+                    <div>Would you rather {question.optionTwo.text}?</div>
+                    <div className="polling-percentage" style={{ width: optionTwoPct }}>
+                      {optionTwoPct}
+                    </div>
+                    <div className="polling-answers-count">
+                      {optionTwoVotes} out of {allVotes} votes
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <div className="polling-body">
-                <form>
-                  <label>
-                    <input
-                      type="radio"
-                      id="optionOne"
-                      checked={this.state.currentAnswer === 'optionOne'}
-                      onChange={this.handleChange}
-                    />
-                    {question.optionOne.text}
-                  </label>
-                  <label>
-                    <input
-                      type="radio"
-                      id="optionTwo"
-                      checked={this.state.currentAnswer === 'optionTwo'}
-                      onChange={this.handleChange}
-                    />
-                    {question.optionTwo.text}
-                  </label>
-                </form>
-                <button className="btn" type="submit" onClick={this.handleSubmit}>
-                  Submit
-                </button>
-              </div>
-            )}
+              ) : (
+                <div className="polling-body">
+                  <form>
+                    <label>
+                      <input
+                        type="radio"
+                        id="optionOne"
+                        checked={this.state.currentAnswer === 'optionOne'}
+                        onChange={this.handleChange}
+                      />
+                      {question.optionOne.text}
+                    </label>
+                    <label>
+                      <input
+                        type="radio"
+                        id="optionTwo"
+                        checked={this.state.currentAnswer === 'optionTwo'}
+                        onChange={this.handleChange}
+                      />
+                      {question.optionTwo.text}
+                    </label>
+                  </form>
+                  <button className="polling-btn" type="submit" onClick={this.handleSubmit}>
+                    Submit
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
