@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestionAnswer } from '../actions/questions';
+import { Redirect } from 'react-router-dom';
 
 class Polling extends Component {
   state = {
@@ -33,6 +34,9 @@ class Polling extends Component {
   convertToPct = num => (num * 100).toFixed(0) + '%';
 
   render() {
+    if (this.props.authedUser === null) {
+      return <Redirect to="/login" />;
+    }
     const { name, avatarURL } = this.props.user;
     const { question } = this.props;
     const { answered } = this.state;
