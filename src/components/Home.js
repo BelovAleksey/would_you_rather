@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 
 class Home extends Component {
   state = {
-    answered: true,
+    answered: false,
   };
 
   changeToAnswered = e => {
@@ -28,16 +28,16 @@ class Home extends Component {
       <div className="questions-list">
         <div>
           <button
-            className={this.state.answered ? 'active-questions-list' : 'passive-questions-list'}
-            onClick={this.changeToAnswered}
-          >
-            Answered Questions
-          </button>
-          <button
             className={this.state.answered ? 'passive-questions-list' : 'active-questions-list'}
             onClick={this.changeToUnanswered}
           >
             Unanswered Questions
+          </button>
+          <button
+            className={this.state.answered ? 'active-questions-list' : 'passive-questions-list'}
+            onClick={this.changeToAnswered}
+          >
+            Answered Questions
           </button>
           <ul>
             {renderedQuestions.map(id => (
@@ -53,14 +53,16 @@ class Home extends Component {
 }
 
 function mapStateToProps({ users, questions, authedUser }) {
+  const answered = authedUser ? Object.keys(users[authedUser].answers) : null;
+  const unAnswered = authedUser
+    ? Object.keys(questions).filter(
+        question => !Object.keys(users[authedUser].answers).includes(question),
+      )
+    : null;
   return {
     authedUser,
-    answeredQuestion: authedUser ? Object.keys(users[authedUser].answers) : null,
-    unAnsweredQuestion: authedUser
-      ? Object.keys(questions).filter(
-          question => !Object.keys(users[authedUser].answers).includes(question),
-        )
-      : null,
+    answeredQuestion: answered.sort((a, b) => questions[b].timestamp - questions[a].timestamp),
+    unAnsweredQuestion: unAnswered.sort((a, b) => questions[b].timestamp - questions[a].timestamp),
   };
 }
 
