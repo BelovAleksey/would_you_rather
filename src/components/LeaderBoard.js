@@ -9,7 +9,7 @@ class LeaderBoard extends Component {
     return (
       <div className="leader-list">
         <ul>
-          {Object.values(this.props.users).map(user => (
+          {this.props.users.map(user => (
             <li key={user.id}>
               <div className="leader-section">
                 <div className="avatar-section">
@@ -44,7 +44,12 @@ class LeaderBoard extends Component {
 function mapStateToProps({ authedUser, users }) {
   return {
     authedUser,
-    users,
+    users: Object.values(users).sort(
+      (a, b) =>
+        b.questions.length +
+        Object.keys(b.answers).length -
+        (a.questions.length + Object.keys(a.answers).length),
+    ),
   };
 }
 

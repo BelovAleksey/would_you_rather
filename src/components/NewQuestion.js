@@ -38,7 +38,7 @@ class NewQuestion extends Component {
   render() {
     const { optionOne, optionTwo, toHome } = this.state;
     if (toHome === true) {
-      return <Redirect to="/" />;
+      return <Redirect to="/home" />;
     }
     return (
       <div className="new-question">
