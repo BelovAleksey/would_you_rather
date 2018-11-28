@@ -38,7 +38,10 @@ class NewQuestion extends Component {
   render() {
     const { optionOne, optionTwo, toHome } = this.state;
     if (toHome === true) {
-      return <Redirect to="/home" />;
+      return <Redirect to="/" />;
+    }
+    if (this.props.authedUser === null) {
+      return <p>Please press Home to log in</p>;
     }
     return (
       <div className="new-question">

@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { formatQuestion } from '../utils/helpers';
 import { Link } from 'react-router-dom';
 
 class Question extends Component {
-  toQuestion = (e, id) => {
-    e.preventDefault();
-    return <Redirect to={`questions/${id}`} />;
-  };
   render() {
     const { question } = this.props;
     if (question === null) {
       return <p>This Question doesn't exist</p>;
     }
+
     const { name, id, avatar, optionOne } = question;
     return (
       <div className="question">

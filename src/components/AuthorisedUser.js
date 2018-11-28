@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setAuthedUser } from '../actions/authedUser';
+import { Redirect } from 'react-router-dom';
 
 class AuthorisedUser extends Component {
+  state = {
+    toHome: false,
+  };
   handleClick = e => {
     e.preventDefault();
+    this.setState({ toHome: true });
     this.props.dispatch(setAuthedUser(null));
   };
   render() {
     const { user } = this.props;
+    if (this.state.toHome === true) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <div className="navigation-item">

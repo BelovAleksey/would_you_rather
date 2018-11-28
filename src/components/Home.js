@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
-import { Redirect } from 'react-router-dom';
 
 class Home extends Component {
   state = {
@@ -22,7 +21,7 @@ class Home extends Component {
       ? this.props.answeredQuestion
       : this.props.unAnsweredQuestion;
     if (this.props.authedUser === null) {
-      return <Redirect to="/login" />;
+      return <p>Please Login</p>;
     }
     return (
       <div className="questions-list">

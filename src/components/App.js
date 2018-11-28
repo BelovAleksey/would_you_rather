@@ -23,11 +23,10 @@ class App extends Component {
             <Nav />
             {this.props.loading === true ? null : (
               <div>
-                <Route path="/login" component={Login} />
+                <Route exact path="/" component={this.props.authedUser === null ? Login : Home} />
                 <Route path="/question/:question_id" component={Polling} />
                 <Route path="/leaderboard" component={LeaderBoard} />
                 <Route path="/add" component={NewQuestion} />
-                <Route path="/home" component={Home} />
               </div>
             )}
           </div>

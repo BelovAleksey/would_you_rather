@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import { setAuthedUser } from '../actions/authedUser';
@@ -27,7 +26,7 @@ class Login extends Component {
   render() {
     const { currentOption, toHome } = this.state;
     if (toHome === 'true' || this.props.authedUser !== null) {
-      return <Redirect to="/home" />;
+      return <p>Please Login</p>;
     }
     return (
       <div className="login">
