@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestionAnswer } from '../actions/questions';
+import { addUserAnswer } from '../actions/users';
 
 class Polling extends Component {
   state = {
@@ -11,13 +12,13 @@ class Polling extends Component {
     e.preventDefault();
     const { currentAnswer } = this.state;
     const { dispatch, question, user } = this.props;
-    dispatch(
-      handleAddQuestionAnswer({
-        authedUser: user.id,
-        qid: question.id,
-        answer: currentAnswer,
-      }),
-    );
+    const info = {
+      authedUser: user.id,
+      qid: question.id,
+      answer: currentAnswer,
+    };
+    dispatch(handleAddQuestionAnswer(info));
+    dispatch(addUserAnswer(info));
     this.setState(state => ({
       currentAnswer: '',
       answered: state.currentAnswer,
