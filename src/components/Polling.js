@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestionAnswer } from '../actions/questions';
 import { addUserAnswer } from '../actions/users';
+import Login from './Login';
+import Page404 from './Page404';
 
 class Polling extends Component {
   state = {
@@ -34,11 +36,16 @@ class Polling extends Component {
   convertToPct = num => (num * 100).toFixed(0) + '%';
 
   render() {
+    console.log(this.props);
     if (this.props.authedUser === null) {
-      return <p>Please press Home to log in</p>;
+      return <Login />;
     }
-    const { name, avatarURL } = this.props.user;
     const { question } = this.props;
+    if (question === null) {
+      return <Page404 />;
+    }
+
+    const { name, avatarURL } = this.props.user;
     const { answered } = this.state;
 
     const optionOneVotes = question.optionOne.votes.length;
@@ -133,9 +140,10 @@ class Polling extends Component {
 
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { question_id } = props.match.params;
-  const question = questions ? questions[question_id] : null;
+  const question = questions && questions[question_id] ? questions[question_id] : null;
   const user = question ? users[question.author] : null;
   const answer = user ? user.answers[question_id] : null;
+  console.log(user);
 
   return {
     authedUser,

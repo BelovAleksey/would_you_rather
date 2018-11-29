@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Login from './Login';
 class LeaderBoard extends Component {
   render() {
     if (this.props.authedUser === null) {
-      return <p>Please press Home to log in</p>;
+      return <Login />;
     }
     return (
       <div className="leader-list">

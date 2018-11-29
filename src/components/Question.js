@@ -5,12 +5,7 @@ import { Link } from 'react-router-dom';
 
 class Question extends Component {
   render() {
-    const { question } = this.props;
-    if (question === null) {
-      return <p>This Question doesn't exist</p>;
-    }
-
-    const { name, id, avatar, optionOne } = question;
+    const { name, id, avatar, optionOne } = this.props.question;
     return (
       <div className="question">
         <div className="question-header">{name} asks:</div>
@@ -37,10 +32,9 @@ class Question extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, users, questions }, { id }) {
+function mapStateToProps({ users, questions }, { id }) {
   const question = questions[id];
   return {
-    authedUser,
     question: question ? formatQuestion(question, users[question.author]) : null,
   };
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
 import { Redirect } from 'react-router-dom';
+import Login from './Login';
 
 class NewQuestion extends Component {
   state = {
@@ -42,7 +43,7 @@ class NewQuestion extends Component {
       return <Redirect to="/" />;
     }
     if (this.props.authedUser === null) {
-      return <p>Please press Home to log in</p>;
+      return <Login />;
     }
     return (
       <div className="new-question">
