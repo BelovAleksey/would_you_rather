@@ -26,17 +26,14 @@ class Polling extends Component {
       answered: state.currentAnswer,
     }));
   };
-  handleChange = e => {
-    if (e.target.id === 'optionOne') {
-      this.setState(() => ({ currentAnswer: 'optionOne' }));
-    } else {
-      this.setState(() => ({ currentAnswer: 'optionTwo' }));
-    }
-  };
+  handleChange = e =>
+    this.setState({
+      currentAnswer: e.target.id,
+    });
+
   convertToPct = num => (num * 100).toFixed(0) + '%';
 
   render() {
-    console.log(this.props);
     if (this.props.authedUser === null) {
       return <Login />;
     }
@@ -143,7 +140,6 @@ function mapStateToProps({ authedUser, users, questions }, props) {
   const question = questions && questions[question_id] ? questions[question_id] : null;
   const user = question ? users[question.author] : null;
   const answer = user ? user.answers[question_id] : null;
-  console.log(user);
 
   return {
     authedUser,
