@@ -9,17 +9,18 @@ class NewQuestion extends Component {
     optionTwoText: '',
     toHome: false,
   };
-  handleChangeOptionOne = e => {
+  handleChange = e => {
     const text = e.target.value;
-    this.setState(() => ({
-      optionOneText: text,
-    }));
-  };
-  handleChangeOptionTwo = e => {
-    const text = e.target.value;
-    this.setState(() => ({
-      optionTwoText: text,
-    }));
+    const id = e.target.id;
+    if (id === 'optionOne') {
+      this.setState(() => ({
+        optionOneText: text,
+      }));
+    } else if (id === 'optionTwo') {
+      this.setState(() => ({
+        optionTwoText: text,
+      }));
+    }
   };
   handleSubmit = e => {
     e.preventDefault();
@@ -36,7 +37,7 @@ class NewQuestion extends Component {
     });
   };
   render() {
-    const { optionOne, optionTwo, toHome } = this.state;
+    const { optionOneText, optionTwoText, toHome } = this.state;
     if (toHome === true) {
       return <Redirect to="/" />;
     }
@@ -52,21 +53,23 @@ class NewQuestion extends Component {
           <form className="" onSubmit={this.handleSubmit}>
             <textarea
               placeholder="Enter Option One Text Here"
-              value={optionOne}
-              onChange={this.handleChangeOptionOne}
+              value={optionOneText}
+              id="optionOne"
+              onChange={this.handleChange}
               className="textarea"
             />
             <div className="new-question-or">OR</div>
             <textarea
               placeholder="Enter Option Two Text Here"
-              value={optionTwo}
-              onChange={this.handleChangeOptionTwo}
+              value={optionTwoText}
+              id="optionTwo"
+              onChange={this.handleChange}
               className="textarea"
             />
             <button
               className="new-question-button"
               type="submit"
-              disabled={optionOne === '' || optionTwo === ''}
+              disabled={optionOneText === '' || optionTwoText === ''}
             >
               Submit
             </button>
