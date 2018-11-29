@@ -133,9 +133,9 @@ class Polling extends Component {
 
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { question_id } = props.match.params;
-  const user = users[authedUser];
-  const answer = user ? user.answers[question_id] : null;
   const question = questions ? questions[question_id] : null;
+  const user = question ? users[question.author] : null;
+  const answer = user ? user.answers[question_id] : null;
 
   return {
     authedUser,
