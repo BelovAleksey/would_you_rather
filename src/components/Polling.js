@@ -13,9 +13,9 @@ class Polling extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { currentAnswer } = this.state;
-    const { dispatch, question, user } = this.props;
+    const { dispatch, question, authedUser } = this.props;
     const info = {
-      authedUser: user.id,
+      authedUser,
       qid: question.id,
       answer: currentAnswer,
     };
@@ -139,7 +139,10 @@ function mapStateToProps({ authedUser, users, questions }, props) {
   const { question_id } = props.match.params;
   const question = questions && questions[question_id] ? questions[question_id] : null;
   const user = question ? users[question.author] : null;
-  const answer = user ? user.answers[question_id] : null;
+  const answer =
+    users && authedUser && users[authedUser].answers[question_id]
+      ? users[authedUser].answers[question_id]
+      : null;
 
   return {
     authedUser,
