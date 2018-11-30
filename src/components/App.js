@@ -23,7 +23,9 @@ class App extends Component {
           <LoadingBar />
           <div>
             <Nav />
-            {this.props.loading === true ? null : (
+            {this.props.loading === true ? (
+              <Login />
+            ) : (
               <Switch>
                 <Route exact path="/" component={this.props.authedUser === null ? Login : Home} />
                 <Route path="/question/:question_id" component={Polling} />
