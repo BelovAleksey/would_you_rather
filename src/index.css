@@ -22,7 +22,8 @@ li {
 .link {
   color: #5c5d6f;
 }
-p {
+
+.page404 {
   text-align: center;
   font-size: 25px;
   font-weight: bold;

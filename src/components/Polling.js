@@ -34,12 +34,13 @@ class Polling extends Component {
   convertToPct = num => (num * 100).toFixed(0) + '%';
 
   render() {
-    if (this.props.authedUser === null) {
-      return <Login />;
-    }
     const { question } = this.props;
     if (question === null) {
       return <Page404 />;
+    }
+
+    if (this.props.authedUser === null) {
+      return <Login />;
     }
 
     const { name, avatarURL } = this.props.user;
