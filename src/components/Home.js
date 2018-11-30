@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Question from './Question';
+import PropTypes from 'prop-types';
 
 class Home extends Component {
   state = {
@@ -50,6 +51,11 @@ class Home extends Component {
     );
   }
 }
+Home.propTypes = {
+  authedUser: PropTypes.string,
+  answeredQuestion: PropTypes.arrayOf(PropTypes.string),
+  unAnsweredQuestion: PropTypes.arrayOf(PropTypes.string),
+};
 
 function mapStateToProps({ users, questions, authedUser }) {
   const answered = authedUser ? Object.keys(users[authedUser].answers) : null;

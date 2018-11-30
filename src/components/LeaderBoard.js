@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Login from './Login';
+import PropTypes from 'prop-types';
+
 function LeaderBoard(props) {
   if (props.authedUser === null) {
     return <Login />;
@@ -39,6 +41,11 @@ function LeaderBoard(props) {
     </div>
   );
 }
+LeaderBoard.propTypes = {
+  authedUser: PropTypes.string,
+  users: PropTypes.arrayOf(PropTypes.object),
+};
+
 function mapStateToProps({ authedUser, users }) {
   return {
     authedUser,

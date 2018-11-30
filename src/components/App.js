@@ -10,6 +10,7 @@ import LeaderBoard from './LeaderBoard';
 import Login from './Login';
 import Nav from './Nav';
 import Page404 from './Page404';
+import PropTypes from 'prop-types';
 
 class App extends Component {
   componentDidMount() {
@@ -37,6 +38,10 @@ class App extends Component {
     );
   }
 }
+App.propTypes = {
+  loading: PropTypes.bool,
+  authedUser: PropTypes.string,
+};
 
 function mapStateToProps({ questions, authedUser }) {
   return {

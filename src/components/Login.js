@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Dropdown } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import { setAuthedUser } from '../actions/authedUser';
+import PropTypes from 'prop-types';
 
 class Login extends Component {
   state = {
@@ -57,6 +58,10 @@ class Login extends Component {
     );
   }
 }
+Login.propTypes = {
+  authedUser: PropTypes.string,
+  users: PropTypes.arrayOf(PropTypes.object),
+};
 function mapStateToProps({ users, authedUser }) {
   return {
     authedUser,

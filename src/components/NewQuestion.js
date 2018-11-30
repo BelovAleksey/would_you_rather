@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { handleAddQuestion } from '../actions/questions';
 import { Redirect } from 'react-router-dom';
 import Login from './Login';
+import PropTypes from 'prop-types';
 
 class NewQuestion extends Component {
   state = {
@@ -80,6 +81,10 @@ class NewQuestion extends Component {
     );
   }
 }
+NewQuestion.propTypes = {
+  authedUser: PropTypes.string,
+};
+
 function mapToStateProps({ authedUser }) {
   return {
     authedUser,

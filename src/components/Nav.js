@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import AuthorisedUser from './AuthorisedUser';
+import PropTypes from 'prop-types';
 
 function Nav(props) {
   return (
@@ -25,6 +26,9 @@ function Nav(props) {
     </div>
   );
 }
+Nav.propTypes = {
+  authedUser: PropTypes.string,
+};
 
 function mapStateToProps({ authedUser }) {
   return {

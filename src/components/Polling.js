@@ -4,6 +4,7 @@ import { handleAddQuestionAnswer } from '../actions/questions';
 import { addUserAnswer } from '../actions/users';
 import Login from './Login';
 import Page404 from './Page404';
+import PropTypes from 'prop-types';
 
 class Polling extends Component {
   state = {
@@ -134,7 +135,13 @@ class Polling extends Component {
     );
   }
 }
-
+Polling.propTypes = {
+  authedUser: PropTypes.string,
+  question_id: PropTypes.string,
+  user: PropTypes.object,
+  question: PropTypes.object,
+  answer: PropTypes.string,
+};
 function mapStateToProps({ authedUser, users, questions }, props) {
   const { question_id } = props.match.params;
   const question = questions && questions[question_id] ? questions[question_id] : null;
